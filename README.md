@@ -14,7 +14,7 @@ Sistem pakar berbasis web untuk mendiagnosis gangguan suara (disfonia) menggunak
 ---
 
 ## 🌐 Link Deployment
-**🔗 vocalysis.up.railway.app**
+**vocalysis.up.railway.app**
 
 ---
 
