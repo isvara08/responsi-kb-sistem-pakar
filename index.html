@@ -43,7 +43,7 @@
 
         .sidebar {
             width: 280px;
-            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(180deg, #ff6b9d 0%, #c44569 100%);
             padding: 30px 20px;
             color: white;
             display: flex;
@@ -109,7 +109,7 @@
 
         .main-content {
             flex: 1;
-            padding: 30px;
+            padding: 40px 50px;
             overflow-y: auto;
             max-height: calc(100vh - 40px);
         }
@@ -406,6 +406,205 @@
 
         .nav-item.active {
             color: #f5576c;
+        }
+
+        /* HALAMAN UTAMA - WELCOME CARD */
+        .welcome-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 150px);
+        }
+
+        .welcome-card {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            border-radius: 30px;
+            padding: 50px 60px;
+            max-width: 600px;
+            width: 100%;
+            color: white;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(196, 69, 105, 0.3);
+        }
+
+        .welcome-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .welcome-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .welcome-subtitle {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .welcome-desc {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .btn-start {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+            padding: 15px 50px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-start:hover {
+            background: white;
+            color: #c44569;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* HALAMAN PERTANYAAN - GEJALA */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .symptoms-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 1000px) {
+            .symptoms-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .symptoms-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .symptom-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+            text-align: center;
+        }
+
+        .symptom-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .symptom-card.selected {
+            border-color: #ff6b9d;
+            background: linear-gradient(135deg, #fff5f8 0%, #ffffff 100%);
+        }
+
+        .symptom-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 28px;
+        }
+
+        .symptom-card:nth-child(odd) .symptom-icon { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+        .symptom-card:nth-child(even) .symptom-icon { background: linear-gradient(135deg, #f093fb, #f5576c); color: white; }
+
+        .symptom-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .cf-options {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .cf-btn {
+            padding: 6px 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .cf-btn:hover, .cf-btn.active {
+            background: #ff6b9d;
+            border-color: #ff6b9d;
+            color: white;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: white;
+            border: none;
+            padding: 18px 60px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(196, 69, 105, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(196, 69, 105, 0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
         }
 
         /* Diagnosis Page Styles */
@@ -809,158 +1008,48 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Home Page -->
+            <!-- HALAMAN 1: UTAMA -->
             <div id="homePage" class="page active">
-                <div class="header">
-                    <div class="greeting">
-                        <h3>Hello,</h3>
-                        <h1>Pengguna!</h1>
-                    </div>
-                    <div class="profile-icon">
-                        <i class="fas fa-user"></i>
-                    </div>
-                </div>
-
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Cari gejala atau informasi...">
-                </div>
-
-                <div class="premium-banner">
-                    <h4>DIAGNOSIS CEPAT</h4>
-                    <h3>Kenali Gangguan Suara Anda Sekarang!</h3>
-                    <div class="banner-dots">
-                        <div class="dot active"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-                    <div class="premium-icon">
-                        <i class="fas fa-microphone-alt"></i>
-                    </div>
-                </div>
-
-                <div class="section-title">
-                    <h3>Kategori</h3>
-                    <span class="see-all">See all <i class="fas fa-chevron-right"></i></span>
-                </div>
-
-                <div class="categories">
-                    <div class="category-item" onclick="showPage('diagnosisPage')">
-                        <div class="category-icon blue">
-                            <i class="fas fa-stethoscope"></i>
+                <div class="welcome-container">
+                    <div class="welcome-card">
+                        <div class="welcome-icon">
+                            <i class="fas fa-microphone-alt"></i>
                         </div>
-                        <span>Diagnosis</span>
-                    </div>
-                    <div class="category-item">
-                        <div class="category-icon purple">
-                            <i class="fas fa-book-medical"></i>
-                        </div>
-                        <span>Penyakit</span>
-                    </div>
-                    <div class="category-item">
-                        <div class="category-icon green">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <span>Kesehatan</span>
-                    </div>
-                    <div class="category-item">
-                        <div class="category-icon orange">
-                            <i class="fas fa-info-circle"></i>
-                        </div>
-                        <span>Info</span>
-                    </div>
-                </div>
-
-                <div class="section-title">
-                    <h3>Jenis Disfonia</h3>
-                    <span class="see-all">See all <i class="fas fa-chevron-right"></i></span>
-                </div>
-
-                <div class="saved-articles">
-                    <div class="articles-grid">
-                        <div class="article-card">
-                            <div class="article-header">
-                                <div class="article-icon pink">
-                                    <i class="fas fa-head-side-cough"></i>
-                                </div>
-                                <div>
-                                    <div class="article-count">5</div>
-                                    <div class="article-label">Organik</div>
-                                </div>
-                            </div>
-                            <button class="article-btn pink" onclick="showPage('diseasePage')">Lihat</button>
-                        </div>
-                        <div class="article-card">
-                            <div class="article-header">
-                                <div class="article-icon blue">
-                                    <i class="fas fa-brain"></i>
-                                </div>
-                                <div>
-                                    <div class="article-count">3</div>
-                                    <div class="article-label">Fungsional</div>
-                                </div>
-                            </div>
-                            <button class="article-btn blue" onclick="showPage('diseasePage')">Lihat</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bottom-nav">
-                    <div class="nav-item active" onclick="showPage('homePage')">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <div class="nav-item" onclick="showPage('diagnosisPage')">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="nav-item">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <div class="nav-item">
-                        <i class="fas fa-user"></i>
+                        <h1 class="welcome-title">Selamat Datang!</h1>
+                        <p class="welcome-subtitle">Sistem Pakar Diagnosis Disfonia</p>
+                        <p class="welcome-desc">
+                            Sistem ini dirancang untuk membantu mendeteksi gangguan suara (disfonia) pada penyanyi dan guru menggunakan metode Certainty Factor. Jawab beberapa pertanyaan sederhana untuk mendapatkan hasil diagnosis awal beserta rekomendasi penanganan.
+                        </p>
+                        <button class="btn-start" onclick="showPage('diagnosisPage')">
+                            Mulai Diagnosis <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Diagnosis Page -->
+            <!-- HALAMAN 2: PERTANYAAN (GEJALA) -->
             <div id="diagnosisPage" class="page">
-                <div class="page-title">
-                    <i class="fas fa-arrow-left" onclick="showPage('homePage')" style="cursor: pointer; margin-right: 15px;"></i>
-                    Diagnosis Disfonia
+                <div class="page-header">
+                    <h2>Pilih Gejala yang Anda Rasakan</h2>
+                    <p>Klik pada gejala yang sesuai dan pilih tingkat keyakinan</p>
                 </div>
 
-                <div class="section-title" style="margin-top: -10px;">
-                    <h3>Pilih Gejala yang Dirasakan</h3>
-                </div>
-
-                <div class="symptoms-grid" id="symptomsList">
+                <div class="symptoms-container" id="symptomsList">
                     <!-- Symptoms will be generated by JavaScript -->
                 </div>
 
-                <button class="diagnose-btn" onclick="runDiagnosis()">
-                    <i class="fas fa-stethoscope"></i> Mulai Diagnosis
-                </button>
-
-                <div class="bottom-nav">
-                    <div class="nav-item" onclick="showPage('homePage')">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <div class="nav-item active" onclick="showPage('diagnosisPage')">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="nav-item">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <div class="nav-item">
-                        <i class="fas fa-user"></i>
-                    </div>
+                <div class="btn-container">
+                    <button class="btn-primary" onclick="runDiagnosis()" id="btnDiagnose">
+                        Lanjutkan Diagnosis
+                    </button>
                 </div>
             </div>
 
-            <!-- Results Page -->
+            <!-- HALAMAN 3: HASIL DIAGNOSA -->
             <div id="resultsPage" class="page">
-                <div class="page-title">
-                    <i class="fas fa-arrow-left" onclick="showPage('diagnosisPage')" style="cursor: pointer; margin-right: 15px;"></i>
-                    Hasil Diagnosis
+                <div class="page-header">
+                    <h2>Hasil Diagnosis</h2>
+                    <p>Berdasarkan gejala yang Anda pilih</p>
                 </div>
 
                 <div class="result-card">
@@ -988,27 +1077,14 @@
                     <canvas id="cfChart"></canvas>
                 </div>
 
-                <button class="back-btn" onclick="showPage('homePage')">
-                    <i class="fas fa-home"></i> Kembali ke Beranda
-                </button>
-
-                <div class="bottom-nav">
-                    <div class="nav-item active" onclick="showPage('homePage')">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <div class="nav-item" onclick="showPage('diagnosisPage')">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="nav-item">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <div class="nav-item">
-                        <i class="fas fa-user"></i>
-                    </div>
+                <div class="btn-container">
+                    <button class="btn-primary" onclick="showPage('diagnosisPage')">
+                        <i class="fas fa-redo" style="margin-right: 10px;"></i>Diagnosis Ulang
+                    </button>
                 </div>
             </div>
 
-            <!-- Disease Info Page -->
+            <!-- HALAMAN INFO PENYAKIT -->
             <div id="diseasePage" class="page">
                 <div class="page-title">
                     <i class="fas fa-arrow-left" onclick="showPage('homePage')" style="cursor: pointer; margin-right: 15px;"></i>
@@ -1261,48 +1337,79 @@
         let selectedSymptoms = {};
         let cfChart = null;
 
-        // Initialize symptoms list
+        // Icons for each symptom
+        const symptomIcons = {
+            'G1': 'fa-head-side-cough',
+            'G2': 'fa-wave-square',
+            'G3': 'fa-heartbeat',
+            'G4': 'fa-arrow-up',
+            'G5': 'fa-head-side-virus',
+            'G6': 'fa-circle-notch',
+            'G7': 'fa-volume-down',
+            'G8': 'fa-wind',
+            'G9': 'fa-compress-alt',
+            'G10': 'fa-necktie',
+            'G11': 'fa-smog',
+            'G12': 'fa-thermometer-half',
+            'G13': 'fa-music',
+            'G14': 'fa-wave-square',
+            'G15': 'fa-stomach'
+        };
+
+        // Initialize symptoms list with card design
         function initSymptoms() {
             const container = document.getElementById('symptomsList');
             container.innerHTML = '';
-            
+
             symptoms.forEach(symptom => {
-                const item = document.createElement('div');
-                item.className = 'symptom-item';
-                item.dataset.id = symptom.id;
-                item.innerHTML = `
-                    <div class="symptom-checkbox">
-                        <i class="fas fa-check"></i>
+                const card = document.createElement('div');
+                card.className = 'symptom-card';
+                card.dataset.id = symptom.id;
+
+                const iconClass = symptomIcons[symptom.id] || 'fa-question';
+
+                card.innerHTML = `
+                    <div class="symptom-icon">
+                        <i class="fas ${iconClass}"></i>
                     </div>
-                    <span class="symptom-text">${symptom.name}</span>
-                    <div class="cf-selector hidden">
+                    <div class="symptom-name">${symptom.name}</div>
+                    <div class="cf-options">
                         ${cfOptions.map((opt, idx) => `
-                            <span class="cf-option ${idx === 2 ? 'active' : ''}" data-cf="${opt.value}">${opt.label}</span>
+                            <button class="cf-btn ${idx === 2 ? 'active' : ''}" data-cf="${opt.value}">${opt.label}</button>
                         `).join('')}
                     </div>
                 `;
-                
-                item.addEventListener('click', function(e) {
-                    if (e.target.classList.contains('cf-option')) {
-                        e.stopPropagation();
-                        item.querySelectorAll('.cf-option').forEach(o => o.classList.remove('active'));
-                        e.target.classList.add('active');
-                        selectedSymptoms[symptom.id] = parseFloat(e.target.dataset.cf);
-                    } else {
+
+                // Card selection click
+                card.addEventListener('click', function(e) {
+                    if (!e.target.classList.contains('cf-btn')) {
                         this.classList.toggle('selected');
-                        const cfSelector = this.querySelector('.cf-selector');
-                        cfSelector.classList.toggle('hidden');
-                        
                         if (this.classList.contains('selected')) {
-                            const activeCF = this.querySelector('.cf-option.active');
+                            const activeCF = this.querySelector('.cf-btn.active');
                             selectedSymptoms[symptom.id] = parseFloat(activeCF.dataset.cf);
                         } else {
                             delete selectedSymptoms[symptom.id];
                         }
                     }
                 });
-                
-                container.appendChild(item);
+
+                // CF button clicks
+                const cfButtons = card.querySelectorAll('.cf-btn');
+                cfButtons.forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        cfButtons.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+
+                        // Select the card if not selected
+                        if (!card.classList.contains('selected')) {
+                            card.classList.add('selected');
+                        }
+                        selectedSymptoms[symptom.id] = parseFloat(this.dataset.cf);
+                    });
+                });
+
+                container.appendChild(card);
             });
         }
 
@@ -1456,52 +1563,9 @@
             }
         }
 
-        // Initialize activity chart on home page
-        function initActivityChart() {
-            const ctx = document.getElementById('activityChart').getContext('2d');
-            
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
-                    datasets: [{
-                        label: 'Diagnosis',
-                        data: [12, 19, 15, 25, 22, 30, 28],
-                        borderColor: 'rgba(245, 87, 108, 0.8)',
-                        backgroundColor: 'rgba(245, 87, 108, 0.1)',
-                        tension: 0.4,
-                        fill: true,
-                        pointRadius: 4,
-                        pointBackgroundColor: 'white',
-                        pointBorderColor: 'rgba(245, 87, 108, 0.8)',
-                        pointBorderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        x: {
-                            display: false
-                        },
-                        y: {
-                            display: false,
-                            min: 0
-                        }
-                    }
-                }
-            });
-        }
-
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             initSymptoms();
-            initActivityChart();
         });
     </script>
 </body>
