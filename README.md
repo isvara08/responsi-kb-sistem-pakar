@@ -4,6 +4,15 @@ Sistem pakar berbasis web untuk mendiagnosis gangguan suara (disfonia) menggunak
 
 ---
 
+## 👨‍💻 Identitas Mahasiswa
+
+- **Nama:** Zahwa Nafiza Azzahra
+- **NIM:** H1D024015
+- **Shift KRS:** H
+- **Shift Sekarang:** F
+
+---
+
 ## 📋 Daftar Isi
 
 - [Deskripsi](#deskripsi)
@@ -249,15 +258,6 @@ POST /api/diagnosis
     "all_results": [...]
 }
 ```
-
----
-
-## 👨‍💻 Kontributor
-
-- **Nama:** Isvara
-- **NIM:** (isi NIM)
-- **Mata Kuliah:** Praktikum Kecerdasan Buatan
-- **Tugas:** Responsi - Sistem Pakar dengan Certainty Factor
 
 ---
 
