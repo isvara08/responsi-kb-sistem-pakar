@@ -90,100 +90,100 @@
     <audio id="bgMusic" src="audio.mp3" loop></audio>
 
     <!-- MUSIC CONTROL -->
-    <button id="musicBtn" class="fixed top-8 right-8 z-[200] flex items-center gap-3 px-5 py-2.5 bg-white border-2 border-white/50 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all group overflow-hidden">
+    <button id="musicBtn" class="fixed top-20 right-4 md:top-8 md:right-8 z-[200] flex items-center gap-2 md:gap-3 px-3 py-2 md:px-5 md:py-2.5 bg-white border-2 border-white/50 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all group overflow-hidden">
         <div id="musicIconWrapper" class="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center text-white shadow-sm transition-colors duration-300">
             <i id="musicIcon" class="fas fa-volume-mute text-sm"></i>
         </div>
-        <span id="musicText" class="text-[13px] font-black text-gray-500 uppercase tracking-widest transition-colors duration-300">Audio: OFF</span>
+        <span id="musicText" class="text-[11px] md:text-[13px] font-black text-gray-500 uppercase tracking-widest transition-colors duration-300">Audio: OFF</span>
     </button>
 
     <!-- NAVBAR -->
-    <nav class="fixed top-0 left-0 right-0 z-[200] flex justify-center items-center px-10 py-6">
-        <img src="logo_transparent.png" alt="Vocalysis Logo" class="h-14 w-auto drop-shadow-xl">
-        <h1 class="text-4xl font-bold text-white tracking-wide lowercase drop-shadow-lg font-['Fredoka']">
+    <nav class="fixed top-0 left-0 right-0 z-[200] flex justify-center items-center px-4 py-4 md:px-10 md:py-6">
+        <img src="logo_transparent.png" alt="Vocalysis Logo" class="h-10 md:h-14 w-auto drop-shadow-xl">
+        <h1 class="text-2xl md:text-4xl font-bold text-white tracking-wide lowercase drop-shadow-lg font-['Fredoka']">
             vocalysis
         </h1>
     </nav>
 
     <!-- ===== MAIN WRAPPER ===== -->
-    <main class="relative flex flex-col items-center justify-center min-h-screen pt-24 pb-16 px-5">
+    <main class="relative flex flex-col items-center justify-center min-h-screen pt-20 pb-8 md:pt-24 md:pb-16 px-3 md:px-5">
         
         <!-- MASTER GLASS CARD (Persistent) -->
-        <div class="glass-card shadow-glow-blue px-10 py-12 md:px-16 md:py-14 max-w-[950px] w-full text-center relative z-10">
+        <div class="glass-card shadow-glow-blue px-4 py-6 sm:px-6 sm:py-8 md:px-10 md:py-12 lg:px-16 lg:py-14 max-w-[950px] w-[98%] sm:w-[95%] md:w-full text-center relative z-10">
             
             <!-- ===== HOME CONTENT ===== -->
             <div id="homePage" class="page-content page-transition page-visible">
-                <h1 class="text-4xl md:text-[52px] font-black text-[#4a4a4a] leading-tight mb-6 drop-shadow-[2px_2px_0_rgba(255,255,255,1)]">
-                    Selamat Datang di Sistem Pakar<br>Diagnosis Disfonia
+                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-[52px] font-black text-[#4a4a4a] leading-tight mb-4 md:mb-6 drop-shadow-[2px_2px_0_rgba(255,255,255,1)]">
+                    Selamat Datang di Sistem Pakar<br class="hidden sm:block">Diagnosis Disfonia
                 </h1>
-                <p class="text-lg md:text-xl font-bold text-[#d35400] leading-relaxed mb-12 max-w-[700px] mx-auto">
+                <p class="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-[#d35400] leading-relaxed mb-6 md:mb-12 max-w-[700px] mx-auto px-2">
                     Program ini membantu mendiagnosa gangguan suara (disfonia) menggunakan metode Certainty Factor. Jawab pertanyaan sederhana Ya/Tidak untuk mendapatkan hasil diagnosis yang cepat dan akurat.
                 </p>
-                <button onclick="startDiagnosis()" class="btn-gradient inline-flex items-center gap-5 px-12 py-5 rounded-full text-2xl md:text-[32px] font-black text-white hover:scale-105">
+                <button onclick="startDiagnosis()" class="btn-gradient inline-flex items-center gap-3 md:gap-5 px-6 md:px-12 py-3 md:py-5 rounded-full text-lg sm:text-xl md:text-2xl lg:text-[32px] font-black text-white hover:scale-105">
                     MULAI DIAGNOSA
-                    <div class="w-16 h-16 md:w-20 md:h-20 bg-white text-brand-blue rounded-full flex items-center justify-center shadow-sm">
-                        <i class="fas fa-microphone-alt text-3xl md:text-5xl"></i>
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-white text-brand-blue rounded-full flex items-center justify-center shadow-sm">
+                        <i class="fas fa-microphone-alt text-xl sm:text-2xl md:text-3xl lg:text-5xl"></i>
                     </div>
                 </button>
             </div>
 
             <!-- ===== QUESTION CONTENT ===== -->
             <div id="questionPage" class="page-content hidden page-transition page-hidden">
-                <div class="mb-6">
-                    <div id="progressLabel" class="text-base font-extrabold text-[#2c3e50] mb-2 text-center">Pertanyaan 1 dari 12</div>
-                    <div class="h-6 bg-pink-100/30 rounded-full overflow-hidden shadow-inner relative">
+                <div class="mb-4 md:mb-6">
+                    <div id="progressLabel" class="text-sm md:text-base font-extrabold text-[#2c3e50] mb-2 text-center">Pertanyaan 1 dari 12</div>
+                    <div class="h-4 md:h-6 bg-pink-100/30 rounded-full overflow-hidden shadow-inner relative">
                         <div id="progressFill" class="h-full bg-progress-gradient rounded-full transition-all duration-500 shadow-[0_0_15px_rgba(216,27,96,0.6)] relative overflow-hidden" style="width:8%">
                             <div class="absolute inset-0 bg-shimmer translate-x-[-100%] animate-shimmer"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex flex-col items-center justify-center gap-4 mb-6">
-                    <div id="questionText" class="text-xl md:text-2xl font-black text-[#2c3e50] leading-tight drop-shadow-[1px_1px_0_rgba(255,255,255,1)] text-center">
+                <div class="flex flex-col items-center justify-center gap-3 md:gap-4 mb-4 md:mb-6">
+                    <div id="questionText" class="text-base sm:text-lg md:text-xl lg:text-2xl font-black text-[#2c3e50] leading-tight drop-shadow-[1px_1px_0_rgba(255,255,255,1)] text-center px-2">
                         Apakah Anda mengalami: Suara serak/parau?
                     </div>
                 </div>
 
                 <!-- Step 1: Ya/Tidak -->
-                <div id="stepYesNo" class="flex flex-col md:flex-row gap-4 justify-center mb-6">
-                    <button onclick="answerYesNo(true)" class="btn-ans bg-gradient-to-b from-[#44cc44] to-[#22aa22] text-[28px] py-4">
+                <div id="stepYesNo" class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mb-4 md:mb-6">
+                    <button onclick="answerYesNo(true)" class="btn-ans bg-gradient-to-b from-[#44cc44] to-[#22aa22] text-xl sm:text-2xl md:text-[28px] py-3 md:py-4 max-w-full sm:max-w-[200px] md:max-w-[350px]">
                         <i class="fas fa-check"></i> YA
                     </button>
-                    <button onclick="answerYesNo(false)" class="btn-ans bg-gradient-to-b from-[#ff6b6b] to-[#ee5253] text-[28px] py-4">
+                    <button onclick="answerYesNo(false)" class="btn-ans bg-gradient-to-b from-[#ff6b6b] to-[#ee5253] text-xl sm:text-2xl md:text-[28px] py-3 md:py-4 max-w-full sm:max-w-[200px] md:max-w-[350px]">
                         <i class="fas fa-times"></i> TIDAK
                     </button>
                 </div>
 
                 <!-- Step 2: Tingkat Keyakinan (hidden by default) -->
-                <div id="stepConfidence" class="hidden flex-col gap-3 mb-6">
-                    <div class="text-lg font-bold text-[#2c3e50] text-center mb-2">
+                <div id="stepConfidence" class="hidden flex-col gap-2 md:gap-3 mb-4 md:mb-6">
+                    <div class="text-sm md:text-lg font-bold text-[#2c3e50] text-center mb-2">
                         Seberapa yakin Anda mengalami gejala ini?
                     </div>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                        <button onclick="answerConfidence(1.0)" class="p-4 rounded-2xl border-4 border-white bg-gradient-to-b from-[#2196f3] to-[#1976d2] text-white font-bold hover:scale-105 transition-all">
-                            <div class="text-2xl mb-1">100%</div>
-                            <div class="text-sm">PASTI</div>
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3">
+                        <button onclick="answerConfidence(1.0)" class="p-2 md:p-4 rounded-xl md:rounded-2xl border-2 md:border-4 border-white bg-gradient-to-b from-[#2196f3] to-[#1976d2] text-white font-bold hover:scale-105 transition-all">
+                            <div class="text-lg md:text-2xl mb-1">100%</div>
+                            <div class="text-xs md:text-sm">PASTI</div>
                         </button>
-                        <button onclick="answerConfidence(0.7)" class="p-4 rounded-2xl border-4 border-white bg-gradient-to-b from-[#8e44ad] to-[#6c3483] text-white font-bold hover:scale-105 transition-all">
-                            <div class="text-2xl mb-1">70%</div>
-                            <div class="text-sm">YAKIN</div>
+                        <button onclick="answerConfidence(0.7)" class="p-2 md:p-4 rounded-xl md:rounded-2xl border-2 md:border-4 border-white bg-gradient-to-b from-[#8e44ad] to-[#6c3483] text-white font-bold hover:scale-105 transition-all">
+                            <div class="text-lg md:text-2xl mb-1">70%</div>
+                            <div class="text-xs md:text-sm">YAKIN</div>
                         </button>
-                        <button onclick="answerConfidence(0.5)" class="p-4 rounded-2xl border-4 border-white bg-gradient-to-b from-[#ff9800] to-[#f57c00] text-white font-bold hover:scale-105 transition-all">
-                            <div class="text-2xl mb-1">50%</div>
-                            <div class="text-sm">MUNGKIN</div>
+                        <button onclick="answerConfidence(0.5)" class="p-2 md:p-4 rounded-xl md:rounded-2xl border-2 md:border-4 border-white bg-gradient-to-b from-[#ff9800] to-[#f57c00] text-white font-bold hover:scale-105 transition-all">
+                            <div class="text-lg md:text-2xl mb-1">50%</div>
+                            <div class="text-xs md:text-sm">MUNGKIN</div>
                         </button>
-                        <button onclick="answerConfidence(0.3)" class="p-4 rounded-2xl border-4 border-white bg-gradient-to-b from-[#9e9e9e] to-[#616161] text-white font-bold hover:scale-105 transition-all">
-                            <div class="text-2xl mb-1">30%</div>
-                            <div class="text-sm">RAGU</div>
+                        <button onclick="answerConfidence(0.3)" class="p-2 md:p-4 rounded-xl md:rounded-2xl border-2 md:border-4 border-white bg-gradient-to-b from-[#9e9e9e] to-[#616161] text-white font-bold hover:scale-105 transition-all">
+                            <div class="text-lg md:text-2xl mb-1">30%</div>
+                            <div class="text-xs md:text-sm">RAGU</div>
                         </button>
                     </div>
                 </div>
 
-                <div class="flex justify-between mt-6 w-full">
-                    <button onclick="prevQuestion()" class="px-6 py-3 rounded-full bg-white text-[#2c3e50] text-sm font-extrabold shadow-md hover:scale-105 transition-all flex items-center gap-2">
+                <div class="flex justify-between mt-4 md:mt-6 w-full">
+                    <button onclick="prevQuestion()" class="px-4 md:px-6 py-2 md:py-3 rounded-full bg-white text-[#2c3e50] text-xs md:text-sm font-extrabold shadow-md hover:scale-105 transition-all flex items-center gap-2">
                         <i class="fas fa-chevron-left"></i> Kembali
                     </button>
-                    <button onclick="skipQuestion()" class="px-6 py-3 rounded-full bg-white text-[#2c3e50] text-sm font-extrabold shadow-md hover:scale-105 transition-all flex items-center gap-2">
+                    <button onclick="skipQuestion()" class="px-4 md:px-6 py-2 md:py-3 rounded-full bg-white text-[#2c3e50] text-xs md:text-sm font-extrabold shadow-md hover:scale-105 transition-all flex items-center gap-2">
                         Lewati <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
@@ -191,25 +191,25 @@
 
             <!-- ===== RESULT CONTENT ===== -->
             <div id="resultPage" class="page-content hidden page-transition page-hidden">
-                <div id="resultBadge" class="w-24 h-24 bg-white rounded-3xl mx-auto mb-5 flex items-center justify-center text-5xl text-[#e91e63] shadow-md">
+                <div id="resultBadge" class="w-16 h-16 md:w-24 md:h-24 bg-white rounded-2xl md:rounded-3xl mx-auto mb-3 md:mb-5 flex items-center justify-center text-3xl md:text-5xl text-[#e91e63] shadow-md">
                     <i class="fas fa-stethoscope"></i>
                 </div>
-                <div id="resultTitle" class="text-3xl font-black mb-2">Nodul Pita Suara</div>
-                <div id="resultCF" class="text-6xl font-black text-[#d81b60] mb-4">85%</div>
-                <div id="resultDesc" class="text-lg font-semibold text-[#5d4037] mb-8 leading-relaxed text-center">Deskripsi diagnosis...</div>
+                <div id="resultTitle" class="text-xl sm:text-2xl md:text-3xl font-black mb-1 md:mb-2">Nodul Pita Suara</div>
+                <div id="resultCF" class="text-4xl md:text-6xl font-black text-[#d81b60] mb-2 md:mb-4">85%</div>
+                <div id="resultDesc" class="text-sm md:text-lg font-semibold text-[#5d4037] mb-4 md:mb-8 leading-relaxed text-center px-2">Deskripsi diagnosis...</div>
                 
-                <div class="bg-white/40 rounded-2xl p-6 text-left mb-8">
-                    <h4 class="text-lg font-extrabold mb-4 flex items-center gap-2">
+                <div class="bg-white/40 rounded-xl md:rounded-2xl p-4 md:p-6 text-left mb-4 md:mb-8">
+                    <h4 class="text-sm md:text-lg font-extrabold mb-2 md:mb-4 flex items-center gap-2">
                         <i class="fas fa-lightbulb"></i> Rekomendasi:
                     </h4>
-                    <ul id="recList" class="space-y-2"></ul>
+                    <ul id="recList" class="space-y-1 md:space-y-2 text-sm md:text-base"></ul>
                 </div>
 
-                <div class="mb-6 bg-white/30 p-4 rounded-xl">
-                    <canvas id="cfChart"></canvas>
+                <div class="mb-4 md:mb-6 bg-white/30 p-2 md:p-4 rounded-xl">
+                    <canvas id="cfChart" class="max-h-[200px] md:max-h-[300px]"></canvas>
                 </div>
 
-                <button onclick="restartDiagnosis()" class="w-full py-5 bg-[#2c3e50] text-white rounded-2xl text-xl font-extrabold hover:bg-[#1a252f] hover:-translate-y-1 transition-all">
+                <button onclick="restartDiagnosis()" class="w-full py-3 md:py-5 bg-[#2c3e50] text-white rounded-xl md:rounded-2xl text-base md:text-xl font-extrabold hover:bg-[#1a252f] hover:-translate-y-1 transition-all">
                     <i class="fas fa-redo mr-2"></i> Diagnosis Ulang
                 </button>
             </div>
