@@ -129,35 +129,61 @@
 
             <!-- ===== QUESTION CONTENT ===== -->
             <div id="questionPage" class="page-content hidden page-transition page-hidden">
-                <div class="mb-8">
-                    <div id="progressLabel" class="text-base font-extrabold text-[#2c3e50] mb-2 text-center">Pertanyaan 1 dari 8</div>
-                    <div class="h-8 bg-pink-100/30 rounded-full overflow-hidden shadow-inner relative">
-                        <div id="progressFill" class="h-full bg-progress-gradient rounded-full transition-all duration-500 shadow-[0_0_15px_rgba(216,27,96,0.6)] relative overflow-hidden" style="width:12.5%">
+                <div class="mb-6">
+                    <div id="progressLabel" class="text-base font-extrabold text-[#2c3e50] mb-2 text-center">Pertanyaan 1 dari 12</div>
+                    <div class="h-6 bg-pink-100/30 rounded-full overflow-hidden shadow-inner relative">
+                        <div id="progressFill" class="h-full bg-progress-gradient rounded-full transition-all duration-500 shadow-[0_0_15px_rgba(216,27,96,0.6)] relative overflow-hidden" style="width:8%">
                             <div class="absolute inset-0 bg-shimmer translate-x-[-100%] animate-shimmer"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row items-center justify-center gap-5 mb-10">
-                    <div id="questionText" class="text-2xl md:text-[38px] font-black text-[#2c3e50] flex-1 leading-tight drop-shadow-[1px_1px_0_rgba(255,255,255,1)] text-center">
-                        Apakah suara Anda sering terdengar serak atau parau?
+                <div class="flex flex-col items-center justify-center gap-4 mb-6">
+                    <div id="questionText" class="text-xl md:text-2xl font-black text-[#2c3e50] leading-tight drop-shadow-[1px_1px_0_rgba(255,255,255,1)] text-center">
+                        Apakah Anda mengalami: Suara serak/parau?
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row gap-6 justify-center">
-                    <button onclick="answerQuestion(true)" class="btn-ans bg-gradient-to-b from-[#44cc44] to-[#22aa22]">
-                        <i class="fas fa-microphone"></i> YA
+                <!-- Step 1: Ya/Tidak -->
+                <div id="stepYesNo" class="flex flex-col md:flex-row gap-4 justify-center mb-6">
+                    <button onclick="answerYesNo(true)" class="btn-ans bg-gradient-to-b from-[#44cc44] to-[#22aa22] text-[28px] py-4">
+                        <i class="fas fa-check"></i> YA
                     </button>
-                    <button onclick="answerQuestion(false)" class="btn-ans bg-gradient-to-b from-[#ff6b6b] to-[#ee5253]">
-                        <i class="fas fa-thumbs-down"></i> TIDAK
+                    <button onclick="answerYesNo(false)" class="btn-ans bg-gradient-to-b from-[#ff6b6b] to-[#ee5253] text-[28px] py-4">
+                        <i class="fas fa-times"></i> TIDAK
                     </button>
                 </div>
 
-                <div class="flex justify-between mt-10 w-full">
-                    <button onclick="prevQuestion()" class="px-8 py-3 rounded-full bg-white text-[#2c3e50] text-base font-extrabold shadow-md hover:scale-105 transition-all flex items-center gap-2">
+                <!-- Step 2: Tingkat Keyakinan (hidden by default) -->
+                <div id="stepConfidence" class="hidden flex-col gap-3 mb-6">
+                    <div class="text-lg font-bold text-[#2c3e50] text-center mb-2">
+                        Seberapa yakin Anda mengalami gejala ini?
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <button onclick="answerConfidence(1.0)" class="p-4 rounded-2xl border-4 border-white bg-gradient-to-b from-[#2196f3] to-[#1976d2] text-white font-bold hover:scale-105 transition-all">
+                            <div class="text-2xl mb-1">100%</div>
+                            <div class="text-sm">PASTI</div>
+                        </button>
+                        <button onclick="answerConfidence(0.7)" class="p-4 rounded-2xl border-4 border-white bg-gradient-to-b from-[#8e44ad] to-[#6c3483] text-white font-bold hover:scale-105 transition-all">
+                            <div class="text-2xl mb-1">70%</div>
+                            <div class="text-sm">YAKIN</div>
+                        </button>
+                        <button onclick="answerConfidence(0.5)" class="p-4 rounded-2xl border-4 border-white bg-gradient-to-b from-[#ff9800] to-[#f57c00] text-white font-bold hover:scale-105 transition-all">
+                            <div class="text-2xl mb-1">50%</div>
+                            <div class="text-sm">MUNGKIN</div>
+                        </button>
+                        <button onclick="answerConfidence(0.3)" class="p-4 rounded-2xl border-4 border-white bg-gradient-to-b from-[#9e9e9e] to-[#616161] text-white font-bold hover:scale-105 transition-all">
+                            <div class="text-2xl mb-1">30%</div>
+                            <div class="text-sm">RAGU</div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-6 w-full">
+                    <button onclick="prevQuestion()" class="px-6 py-3 rounded-full bg-white text-[#2c3e50] text-sm font-extrabold shadow-md hover:scale-105 transition-all flex items-center gap-2">
                         <i class="fas fa-chevron-left"></i> Kembali
                     </button>
-                    <button onclick="skipQuestion()" class="px-8 py-3 rounded-full bg-white text-[#2c3e50] text-base font-extrabold shadow-md hover:scale-105 transition-all flex items-center gap-2">
+                    <button onclick="skipQuestion()" class="px-6 py-3 rounded-full bg-white text-[#2c3e50] text-sm font-extrabold shadow-md hover:scale-105 transition-all flex items-center gap-2">
                         Lewati <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
@@ -192,60 +218,27 @@
     </main>
 
     <script>
+        // Data gejala sesuai dengan backend (G01-G12)
         const questions = [
-            { id: 'G1',  text: 'Apakah suara Anda sering terdengar serak atau parau?' },
-            { id: 'G2',  text: 'Apakah suara Anda terdengar pecah-pecah saat berbicara?' },
-            { id: 'G3',  text: 'Apakah Anda merasakan sakit atau nyeri saat berbicara?' },
-            { id: 'G4',  text: 'Apakah Anda sulit meninggikan nada suara?' },
-            { id: 'G7',  text: 'Apakah suara Anda terasa lemah atau tidak bertenaga?' },
-            { id: 'G8',  text: 'Apakah Anda sering kehabisan napas saat berbicara?' },
-            { id: 'G9',  text: 'Apakah suara Anda terdengar tegang/mengejan saat berbicara?' },
-            { id: 'G12', text: 'Apakah Anda mengalami demam dan pilek secara bersamaan?' }
+            { id: 'G01', text: 'Suara serak/parau' },
+            { id: 'G02', text: 'Suara mudah pecah/putus saat bicara' },
+            { id: 'G03', text: 'Terasa sakit atau tidak nyaman saat bicara' },
+            { id: 'G04', text: 'Batuk kering terus-menerus' },
+            { id: 'G05', text: 'Ada rasa mengganjal di tenggorokan' },
+            { id: 'G06', text: 'Suara lebih berat/rendah dari biasanya' },
+            { id: 'G07', text: 'Cepat lelah saat berbicara/bernyanyi' },
+            { id: 'G08', text: 'Sering membersihkan tenggorokan' },
+            { id: 'G09', text: 'Sulit menjangkau nada tinggi' },
+            { id: 'G10', text: 'Suara bergetar/tremor' },
+            { id: 'G11', text: 'Demam ringan' },
+            { id: 'G12', text: 'Pilek/hidung tersumbat' }
         ];
 
-        const diseases = {
-            'Nodul Pita Suara': {
-                symptoms: { G1:0.9, G2:0.8, G3:0.7, G4:0.8, G9:0.6 },
-                icon: 'fa-head-side-cough',
-                description: 'Pertumbuhan jinak pada pita suara akibat penggunaan suara berlebihan atau teknik vokal yang salah.',
-                recommendations: ['Istirahatkan suara minimal 7–14 hari', 'Hindari berbicara keras', 'Konsultasi dokter THT']
-            },
-            'Polip Pita Suara': {
-                symptoms: { G1:0.9, G2:0.7, G4:0.9, G7:0.8 },
-                icon: 'fa-water',
-                description: 'Benjolan berisi cairan pada pita suara.',
-                recommendations: ['Terapi vokal', 'Hindari merokok', 'Evaluasi operasi']
-            },
-            'Kelelahan Vokal': {
-                symptoms: { G7:0.9, G8:0.8, G9:0.7, G1:0.6, G3:0.5 },
-                icon: 'fa-tired',
-                description: 'Kelelahan otot laring akibat penggunaan suara intensif.',
-                recommendations: ['Istirahat vokal', 'Hidrasi cukup', 'Pernapasan diafragma']
-            },
-            'Laringitis': {
-                symptoms: { G1:0.9, G12:0.8, G3:0.7, G2:0.6 },
-                icon: 'fa-fire',
-                description: 'Radang pada pita suara akibat infeksi atau iritasi.',
-                recommendations: ['Minum air hangat', 'Istirahat total', 'Pelembab udara']
-            },
-            'Disfonia Muscle Tension': {
-                symptoms: { G9:0.9, G3:0.7, G7:0.6, G8:0.6 },
-                icon: 'fa-exclamation-triangle',
-                description: 'Ketegangan otot laring yang berlebihan.',
-                recommendations: ['Terapi wicara', 'Relaksasi leher', 'Manajemen stres']
-            },
-            'Paralisis Pita Suara': {
-                symptoms: { G7:0.9, G4:0.8, G8:0.8, G2:0.6 },
-                icon: 'fa-arrows-alt-h',
-                description: 'Kelumpuhan pita suara akibat kerusakan saraf.',
-                recommendations: ['Evaluasi neurologi', 'Terapi kompensasi', 'Injeksi filler']
-            }
-        };
-
         let currentQ = 0;
-        let answers  = {};
-        let cfChart  = null;
-        const TOTAL  = questions.length;
+        let answers = {}; // Format: { G01: 1.0, G02: 0.7, ... }
+        let cfChart = null;
+        let waitingForConfidence = false;
+        const TOTAL = questions.length;
 
         // MUSIC LOGIC
         const bgMusic = document.getElementById('bgMusic');
@@ -317,8 +310,26 @@
             if (bgMusic.paused) toggleMusic();
             currentQ = 0;
             answers = {};
+            waitingForConfidence = false;
+            resetQuestionUI();
             renderQ();
             showPage('questionPage');
+        }
+
+        function resetQuestionUI() {
+            document.getElementById('stepYesNo').classList.remove('hidden');
+            document.getElementById('stepYesNo').classList.add('flex');
+            document.getElementById('stepConfidence').classList.add('hidden');
+            document.getElementById('stepConfidence').classList.remove('flex');
+            waitingForConfidence = false;
+        }
+
+        function showConfidenceStep() {
+            document.getElementById('stepYesNo').classList.add('hidden');
+            document.getElementById('stepYesNo').classList.remove('flex');
+            document.getElementById('stepConfidence').classList.remove('hidden');
+            document.getElementById('stepConfidence').classList.add('flex');
+            waitingForConfidence = true;
         }
 
         function renderQ() {
@@ -327,16 +338,40 @@
             const pct = (num / TOTAL) * 100;
             document.getElementById('progressLabel').textContent = `Pertanyaan ${num} dari ${TOTAL}`;
             document.getElementById('progressFill').style.width = pct + '%';
-            document.getElementById('questionText').textContent = q.text;
+            document.getElementById('questionText').innerHTML = 
+                `Apakah Anda mengalami:<br><span class="text-brand-purple">${q.text}?</span>`;
+            resetQuestionUI();
         }
 
-        function answerQuestion(yes) {
-            answers[questions[currentQ].id] = yes;
-            if (currentQ >= TOTAL - 1) { runDiagnosis(); }
-            else { currentQ++; renderQ(); }
+        // Step 1: Jawab Ya/Tidak
+        function answerYesNo(yes) {
+            if (yes) {
+                // Jika Ya, tampilkan pilihan keyakinan
+                showConfidenceStep();
+            } else {
+                // Jika Tidak, simpan CF = 0 (tidak ada gejala) dan lanjut
+                answers[questions[currentQ].id] = 0;
+                nextQuestion();
+            }
+        }
+
+        // Step 2: Pilih tingkat keyakinan
+        function answerConfidence(cfValue) {
+            answers[questions[currentQ].id] = cfValue;
+            nextQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentQ >= TOTAL - 1) {
+                runDiagnosis();
+            } else {
+                currentQ++;
+                renderQ();
+            }
         }
 
         function skipQuestion() { 
+            // Skip = tidak menjawab, tidak disertakan dalam diagnosis
             if (currentQ >= TOTAL - 1) { runDiagnosis(); }
             else { currentQ++; renderQ(); }
         }
@@ -344,45 +379,94 @@
         function prevQuestion() {
             if (currentQ === 0) { showPage('homePage'); return; }
             currentQ--;
+            // Hapus jawaban untuk pertanyaan ini
+            delete answers[questions[currentQ].id];
             renderQ();
         }
 
-        function runDiagnosis() {
-            const results = {};
-            for (const [name, data] of Object.entries(diseases)) {
-                let cf = 0;
-                let counted = false;
-                for (const [sid, cfP] of Object.entries(data.symptoms)) {
-                    if (answers[sid] === true) {
-                        counted = true;
-                        cf = cf + cfP * (1 - cf);
-                    }
+        // Kirim data ke API backend
+        async function runDiagnosis() {
+            // Filter hanya gejala dengan CF > 0
+            const gejala = {};
+            for (const [key, value] of Object.entries(answers)) {
+                if (value > 0) {
+                    gejala[key] = value;
                 }
-                if (counted) results[name] = cf;
             }
-            const sorted = Object.entries(results).sort((a, b) => b[1] - a[1]);
-            if (sorted.length === 0) { showNoResult(); return; }
-            displayResults(sorted);
+
+            // Tampilkan loading
+            document.getElementById('questionText').innerHTML = 
+                '<i class="fas fa-spinner fa-spin"></i> Menganalisis data...';
+            document.getElementById('stepYesNo').classList.add('hidden');
+            document.getElementById('stepConfidence').classList.add('hidden');
+
+            try {
+                const response = await fetch('/api/diagnosis', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ gejala: gejala })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    displayResults(data);
+                } else {
+                    alert('Error: ' + (data.error || 'Gagal melakukan diagnosis'));
+                    showPage('homePage');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Gagal terhubung ke server. Pastikan server Flask berjalan.');
+                showPage('homePage');
+            }
         }
 
-        function displayResults(sorted) {
-            const [topName, topCF] = sorted[0];
-            const data = diseases[topName];
-            document.getElementById('resultTitle').textContent = topName;
-            document.getElementById('resultCF').textContent = Math.round(topCF * 100) + '%';
-            document.getElementById('resultDesc').textContent = data.description;
-            document.getElementById('resultBadge').innerHTML = `<i class="fas ${data.icon}"></i>`;
-            document.getElementById('recList').innerHTML = data.recommendations.map(r => `<li class="relative pl-6 before:content-['✓'] before:absolute before:left-0 before:text-green-500 before:font-black font-semibold text-[#5d4037]">${r}</li>`).join('');
-            buildChart(sorted.slice(0, 5));
+        function displayResults(apiData) {
+            const hasil = apiData.hasil;
+            const tertinggi = apiData.tertinggi;
+            const status = apiData.status;
+
+            if (!tertinggi || tertinggi.cf < 0.3) {
+                showNoResult(status);
+                return;
+            }
+
+            // Tampilkan hasil utama
+            document.getElementById('resultTitle').textContent = tertinggi.nama;
+            document.getElementById('resultCF').textContent = tertinggi.cf_persen + '%';
+            document.getElementById('resultDesc').textContent = tertinggi.deskripsi;
+            
+            // Icon berdasarkan penyakit
+            let iconClass = 'fa-stethoscope';
+            if (tertinggi.kode === 'NPS') iconClass = 'fa-head-side-cough';
+            else if (tertinggi.kode === 'LA') iconClass = 'fa-fire';
+            else if (tertinggi.kode === 'KV') iconClass = 'fa-tired';
+            else if (tertinggi.kode === 'DF') iconClass = 'fa-exclamation-triangle';
+            else if (tertinggi.kode === 'LR') iconClass = 'fa-prescription-bottle-alt';
+            document.getElementById('resultBadge').innerHTML = `<i class="fas ${iconClass}"></i>`;
+
+            // Rekomendasi
+            document.getElementById('recList').innerHTML = tertinggi.rekomendasi.map(r => 
+                `<li class="relative pl-6 before:content-['✓'] before:absolute before:left-0 before:text-green-500 before:font-black font-semibold text-[#5d4037]">${r}</li>`
+            ).join('');
+
+            // Build chart untuk top 5 hasil
+            buildChart(hasil.slice(0, 5));
+            
             showPage('resultPage');
         }
 
-        function showNoResult() {
-            document.getElementById('resultTitle').textContent = 'Normal';
-            document.getElementById('resultCF').textContent = '0%';
-            document.getElementById('resultDesc').textContent = 'Tidak ditemukan gejala signifikan.';
-            document.getElementById('resultBadge').innerHTML = '<i class="fas fa-check-circle"></i>';
-            document.getElementById('recList').innerHTML = '<li class="font-semibold text-[#5d4037]">Jaga kesehatan vokal</li>';
+        function showNoResult(status) {
+            document.getElementById('resultTitle').textContent = 'Tidak Terdeteksi';
+            document.getElementById('resultCF').textContent = '< 30%';
+            document.getElementById('resultDesc').textContent = status || 'Tidak ditemukan gejala yang signifikan untuk mendiagnosis penyakit disfonia.';
+            document.getElementById('resultBadge').innerHTML = '<i class="fas fa-check-circle text-green-500"></i>';
+            document.getElementById('recList').innerHTML = 
+                '<li class="font-semibold text-[#5d4037]">Jaga kesehatan vokal Anda</li>' +
+                '<li class="font-semibold text-[#5d4037]">Jika gejala berlanjut, silakan konsultasi ke dokter THT</li>';
             buildChart([]);
             showPage('resultPage');
         }
@@ -390,26 +474,46 @@
         function buildChart(results) {
             if (cfChart) { cfChart.destroy(); }
             if (results.length === 0) return;
+            
             const ctx = document.getElementById('cfChart').getContext('2d');
             cfChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: results.map(r => r[0]),
+                    labels: results.map(r => r.nama),
                     datasets: [{
                         label: 'CF (%)',
-                        data: results.map(r => Math.round(r[1] * 100)),
-                        backgroundColor: 'rgba(216, 27, 96, 0.7)',
+                        data: results.map(r => r.cf_persen),
+                        backgroundColor: [
+                            'rgba(216, 27, 96, 0.8)',
+                            'rgba(142, 68, 173, 0.7)',
+                            'rgba(33, 150, 243, 0.6)',
+                            'rgba(0, 210, 255, 0.5)',
+                            'rgba(255, 152, 0, 0.4)'
+                        ],
                         borderRadius: 10
                     }]
                 },
                 options: {
                     responsive: true,
-                    scales: { y: { beginAtZero: true, max: 100 } }
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: { 
+                        y: { 
+                            beginAtZero: true, 
+                            max: 100,
+                            ticks: { callback: function(value) { return value + '%' } }
+                        } 
+                    }
                 }
             });
         }
 
-        function restartDiagnosis() { showPage('homePage'); }
+        function restartDiagnosis() { 
+            answers = {};
+            currentQ = 0;
+            showPage('homePage'); 
+        }
     </script>
 </body>
 </html>

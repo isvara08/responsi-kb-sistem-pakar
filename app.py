@@ -7,8 +7,21 @@ Backend: Python Flask API
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 
-app = Flask(__name__, template_folder='.', static_folder='.')
+app = Flask(__name__, template_folder='.', static_folder='.', static_url_path='')
 CORS(app)
+
+# Serve media files directly
+@app.route('/logo_transparent.png')
+def serve_logo():
+    return app.send_static_file('logo_transparent.png')
+
+@app.route('/background.mp4')
+def serve_background():
+    return app.send_static_file('background.mp4')
+
+@app.route('/audio.mp3')
+def serve_audio():
+    return app.send_static_file('audio.mp3')
 
 # ============================================================================
 # KNOWLEDGE BASE - BASIS PENGETAHUAN
