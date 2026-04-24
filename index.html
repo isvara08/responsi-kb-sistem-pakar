@@ -218,17 +218,17 @@
     </main>
 
     <script>
-        // Data gejala sesuai dengan backend (G01-G12)
+        // Data gejala sesuai dengan backend (G1-G12)
         const questions = [
-            { id: 'G01', text: 'Suara serak/parau' },
-            { id: 'G02', text: 'Suara mudah pecah/putus saat bicara' },
-            { id: 'G03', text: 'Terasa sakit atau tidak nyaman saat bicara' },
-            { id: 'G04', text: 'Batuk kering terus-menerus' },
-            { id: 'G05', text: 'Ada rasa mengganjal di tenggorokan' },
-            { id: 'G06', text: 'Suara lebih berat/rendah dari biasanya' },
-            { id: 'G07', text: 'Cepat lelah saat berbicara/bernyanyi' },
-            { id: 'G08', text: 'Sering membersihkan tenggorokan' },
-            { id: 'G09', text: 'Sulit menjangkau nada tinggi' },
+            { id: 'G1', text: 'Suara serak/parau' },
+            { id: 'G2', text: 'Suara mudah pecah/putus saat bicara' },
+            { id: 'G3', text: 'Terasa sakit atau tidak nyaman saat bicara' },
+            { id: 'G4', text: 'Batuk kering terus-menerus' },
+            { id: 'G5', text: 'Ada rasa mengganjal di tenggorokan' },
+            { id: 'G6', text: 'Suara lebih berat/rendah dari biasanya' },
+            { id: 'G7', text: 'Cepat lelah saat berbicara/bernyanyi' },
+            { id: 'G8', text: 'Sering membersihkan tenggorokan' },
+            { id: 'G9', text: 'Sulit menjangkau nada tinggi' },
             { id: 'G10', text: 'Suara bergetar/tremor' },
             { id: 'G11', text: 'Demam ringan' },
             { id: 'G12', text: 'Pilek/hidung tersumbat' }
@@ -406,7 +406,7 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ gejala: gejala })
+                    body: JSON.stringify({ symptoms: gejala })
                 });
 
                 const data = await response.json();
@@ -425,43 +425,40 @@
         }
 
         function displayResults(apiData) {
-            const hasil = apiData.hasil;
-            const tertinggi = apiData.tertinggi;
-            const status = apiData.status;
+            const primary = apiData.primary_diagnosis;
+            const allResults = apiData.all_results;
 
-            if (!tertinggi || tertinggi.cf < 0.3) {
-                showNoResult(status);
+            if (!primary || primary.cf_value < 0.2) {
+                showNoResult(primary ? primary.interpretation : 'Tidak dapat menentukan diagnosis');
                 return;
             }
 
             // Tampilkan hasil utama
-            document.getElementById('resultTitle').textContent = tertinggi.nama;
-            document.getElementById('resultCF').textContent = tertinggi.cf_persen + '%';
-            document.getElementById('resultDesc').textContent = tertinggi.deskripsi;
+            document.getElementById('resultTitle').textContent = primary.disease;
+            document.getElementById('resultCF').textContent = primary.cf_percentage + '%';
+            document.getElementById('resultDesc').textContent = primary.description + ' (' + primary.interpretation + ')';
             
-            // Icon berdasarkan penyakit
-            let iconClass = 'fa-stethoscope';
-            if (tertinggi.kode === 'NPS') iconClass = 'fa-head-side-cough';
-            else if (tertinggi.kode === 'LA') iconClass = 'fa-fire';
-            else if (tertinggi.kode === 'KV') iconClass = 'fa-tired';
-            else if (tertinggi.kode === 'DF') iconClass = 'fa-exclamation-triangle';
-            else if (tertinggi.kode === 'LR') iconClass = 'fa-prescription-bottle-alt';
-            document.getElementById('resultBadge').innerHTML = `<i class="fas ${iconClass}"></i>`;
+            // Icon dari backend
+            document.getElementById('resultBadge').innerHTML = `<i class="fas ${primary.icon}"></i>`;
 
             // Rekomendasi
-            document.getElementById('recList').innerHTML = tertinggi.rekomendasi.map(r => 
+            document.getElementById('recList').innerHTML = primary.recommendations.map(r => 
                 `<li class="relative pl-6 before:content-['✓'] before:absolute before:left-0 before:text-green-500 before:font-black font-semibold text-[#5d4037]">${r}</li>`
             ).join('');
 
             // Build chart untuk top 5 hasil
-            buildChart(hasil.slice(0, 5));
+            const chartData = allResults.slice(0, 5).map(r => ({
+                nama: r.disease_name,
+                cf_persen: r.cf_percentage
+            }));
+            buildChart(chartData);
             
             showPage('resultPage');
         }
 
         function showNoResult(status) {
             document.getElementById('resultTitle').textContent = 'Tidak Terdeteksi';
-            document.getElementById('resultCF').textContent = '< 30%';
+            document.getElementById('resultCF').textContent = '< 20%';
             document.getElementById('resultDesc').textContent = status || 'Tidak ditemukan gejala yang signifikan untuk mendiagnosis penyakit disfonia.';
             document.getElementById('resultBadge').innerHTML = '<i class="fas fa-check-circle text-green-500"></i>';
             document.getElementById('recList').innerHTML = 

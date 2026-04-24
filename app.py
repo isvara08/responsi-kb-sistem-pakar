@@ -369,6 +369,7 @@ def get_diseases():
 
 
 @app.route('/api/diagnose', methods=['POST'])
+@app.route('/api/diagnosis', methods=['POST'])
 def diagnose():
     """
     API endpoint untuk diagnosis
