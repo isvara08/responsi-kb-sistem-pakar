@@ -15,30 +15,24 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #faf0e6;
-            background-image: url('background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-color: #fdf6e9;
             min-height: 100vh;
             color: #333;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0;
         }
 
         .web-frame {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            background: linear-gradient(180deg, #f8f9ff 0%, #fff5f8 100%);
-            border-radius: 20px;
-            min-height: calc(100vh - 40px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            min-height: 100vh;
             overflow: hidden;
             display: flex;
+            background: transparent;
         }
 
         .sidebar {
@@ -914,6 +908,246 @@
             display: none !important;
         }
 
+        /* HALAMAN UTAMA - Design Full Width dengan Kartu Besar */
+        .page-full {
+            display: none;
+        }
+
+        .page-full.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .welcome-card-main {
+            background: linear-gradient(135deg, #ff7a7a 0%, #ff6b9d 50%, #ff8fab 100%);
+            border-radius: 40px;
+            padding: 80px 60px;
+            max-width: 650px;
+            width: 100%;
+            color: white;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(255, 107, 157, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-card-main::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .welcome-icon-main {
+            font-size: 80px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .welcome-title-main {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+        }
+
+        .welcome-subtitle-main {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .welcome-desc-main {
+            font-size: 15px;
+            line-height: 2;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-start-main {
+            background: rgba(255,255,255,0.25);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.6);
+            padding: 18px 50px;
+            border-radius: 35px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-start-main:hover {
+            background: white;
+            color: #ff6b9d;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        /* HALAMAN PERTANYAAN - Grid 4x4 */
+        .page-header-main {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 20px;
+        }
+
+        .page-header-main h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #c44569;
+            margin-bottom: 10px;
+        }
+
+        .page-header-main p {
+            font-size: 16px;
+            color: #888;
+        }
+
+        .symptoms-grid-main {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .symptoms-grid-main {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .symptoms-grid-main {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .symptoms-grid-main {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .symptom-card-main {
+            background: white;
+            border-radius: 25px;
+            padding: 30px 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+            text-align: center;
+        }
+
+        .symptom-card-main:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .symptom-card-main.selected {
+            border-color: #ff6b9d;
+            background: linear-gradient(135deg, #fff5f8 0%, #ffffff 100%);
+        }
+
+        .symptom-icon-main {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+            color: white;
+        }
+
+        .symptom-card-main:nth-child(even) .symptom-icon-main {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .symptom-name-main {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            min-height: 42px;
+        }
+
+        .cf-options-main {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .cf-btn-main {
+            padding: 8px 14px;
+            border: 2px solid #e5e7eb;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #666;
+        }
+
+        .cf-btn-main:hover {
+            border-color: #ff6b9d;
+            color: #ff6b9d;
+        }
+
+        .cf-btn-main.active {
+            background: #ff6b9d;
+            border-color: #ff6b9d;
+            color: white;
+        }
+
+        .btn-container-main {
+            text-align: center;
+            padding-bottom: 40px;
+        }
+
+        .btn-primary-main {
+            background: linear-gradient(135deg, #ff7a7a 0%, #ff6b9d 100%);
+            color: white;
+            border: none;
+            padding: 20px 70px;
+            border-radius: 35px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+        }
+
+        .btn-primary-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(255, 107, 157, 0.5);
+        }
+
         /* Web Layout Enhancements */
         .articles-grid {
             display: grid;
@@ -980,34 +1214,71 @@
 </head>
 <body>
     <div class="web-frame">
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <div class="sidebar-logo">
-                <i class="fas fa-microphone-alt"></i>
-                <div>
-                    <h2>Sistem Pakar</h2>
-                    <span style="font-size: 11px; opacity: 0.7;">Diagnosis Disfonia</span>
+        <!-- HALAMAN UTAMA - Full Width dengan Background Ilustrasi -->
+        <div id="homePage" class="page-full active" style="background: linear-gradient(135deg, #faf0e6 0%, #fdf6e9 100%); min-height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; padding: 40px;">
+            <div class="welcome-card-main">
+                <div class="welcome-icon-main">
+                    <i class="fas fa-microphone-alt"></i>
                 </div>
+                <h1 class="welcome-title-main">Selamat Datang!</h1>
+                <p class="welcome-subtitle-main">Sistem Pakar Diagnosis Disfonia</p>
+                <p class="welcome-desc-main">
+                    Sistem ini dirancang untuk membantu mendeteksi gangguan suara (disfonia) pada penyanyi dan guru menggunakan metode Certainty Factor. Jawab beberapa pertanyaan sederhana untuk mendapatkan hasil diagnosis awal beserta rekomendasi penanganan.
+                </p>
+                <button class="btn-start-main" onclick="showPage('diagnosisPage')">
+                    Mulai Diagnosis <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                </button>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#" onclick="showPage('homePage')" id="nav-home" class="active">
-                    <i class="fas fa-home"></i> Beranda
-                </a></li>
-                <li><a href="#" onclick="showPage('diagnosisPage')" id="nav-diagnosis">
-                    <i class="fas fa-stethoscope"></i> Diagnosis
-                </a></li>
-                <li><a href="#" onclick="showPage('diseasePage')" id="nav-disease">
-                    <i class="fas fa-book-medical"></i> Jenis Penyakit
-                </a></li>
-            </ul>
-            <div class="sidebar-footer">
-                <p>&copy; 2024 Sistem Pakar Disfonia</p>
-                <p style="font-size: 10px; margin-top: 5px;">Metode: Certainty Factor</p>
-            </div>
-        </aside>
+        </div>
 
-        <!-- Main Content -->
-        <main class="main-content">
+        <!-- HALAMAN PERTANYAAN - Full Width dengan Grid Gejala -->
+        <div id="diagnosisPage" class="page-full" style="background: linear-gradient(135deg, #faf0e6 0%, #fdf6e9 100%); min-height: 100vh; width: 100%; padding: 40px; display: none;">
+            <div class="page-header-main">
+                <h2>Pilih Gejala yang Anda Rasakan</h2>
+                <p>Klik pada gejala yang sesuai dan pilih tingkat keyakinan</p>
+            </div>
+
+            <div class="symptoms-grid-main" id="symptomsList">
+                <!-- Symptoms will be generated by JavaScript -->
+            </div>
+
+            <div class="btn-container-main">
+                <button class="btn-primary-main" onclick="runDiagnosis()" id="btnDiagnose">
+                    Lanjutkan Diagnosis
+                </button>
+            </div>
+        </div>
+
+        <!-- HALAMAN HASIL - Dengan Sidebar -->
+        <div id="resultsPageContainer" class="page-with-sidebar" style="display: none; width: 100%; min-height: 100vh;">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <div class="sidebar-logo">
+                    <i class="fas fa-microphone-alt"></i>
+                    <div>
+                        <h2>Sistem Pakar</h2>
+                        <span style="font-size: 11px; opacity: 0.7;">Diagnosis Disfonia</span>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#" onclick="showPage('homePage')" id="nav-home">
+                        <i class="fas fa-home"></i> Beranda
+                    </a></li>
+                    <li><a href="#" onclick="showPage('diagnosisPage')" id="nav-diagnosis">
+                        <i class="fas fa-stethoscope"></i> Diagnosis
+                    </a></li>
+                    <li><a href="#" onclick="showPage('diseasePage')" id="nav-disease">
+                        <i class="fas fa-book-medical"></i> Jenis Penyakit
+                    </a></li>
+                </ul>
+                <div class="sidebar-footer">
+                    <p>&copy; 2024 Sistem Pakar Disfonia</p>
+                    <p style="font-size: 10px; margin-top: 5px;">Metode: Certainty Factor</p>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
             <!-- HALAMAN 1: UTAMA -->
             <div id="homePage" class="page active">
                 <div class="welcome-container">
@@ -1356,36 +1627,36 @@
             'G15': 'fa-stomach'
         };
 
-        // Initialize symptoms list with card design
+        // Initialize symptoms list with card design for main pages
         function initSymptoms() {
             const container = document.getElementById('symptomsList');
             container.innerHTML = '';
 
             symptoms.forEach(symptom => {
                 const card = document.createElement('div');
-                card.className = 'symptom-card';
+                card.className = 'symptom-card-main';
                 card.dataset.id = symptom.id;
 
                 const iconClass = symptomIcons[symptom.id] || 'fa-question';
 
                 card.innerHTML = `
-                    <div class="symptom-icon">
+                    <div class="symptom-icon-main">
                         <i class="fas ${iconClass}"></i>
                     </div>
-                    <div class="symptom-name">${symptom.name}</div>
-                    <div class="cf-options">
+                    <div class="symptom-name-main">${symptom.name}</div>
+                    <div class="cf-options-main">
                         ${cfOptions.map((opt, idx) => `
-                            <button class="cf-btn ${idx === 2 ? 'active' : ''}" data-cf="${opt.value}">${opt.label}</button>
+                            <button class="cf-btn-main ${idx === 2 ? 'active' : ''}" data-cf="${opt.value}">${opt.label}</button>
                         `).join('')}
                     </div>
                 `;
 
                 // Card selection click
                 card.addEventListener('click', function(e) {
-                    if (!e.target.classList.contains('cf-btn')) {
+                    if (!e.target.classList.contains('cf-btn-main')) {
                         this.classList.toggle('selected');
                         if (this.classList.contains('selected')) {
-                            const activeCF = this.querySelector('.cf-btn.active');
+                            const activeCF = this.querySelector('.cf-btn-main.active');
                             selectedSymptoms[symptom.id] = parseFloat(activeCF.dataset.cf);
                         } else {
                             delete selectedSymptoms[symptom.id];
@@ -1394,7 +1665,7 @@
                 });
 
                 // CF button clicks
-                const cfButtons = card.querySelectorAll('.cf-btn');
+                const cfButtons = card.querySelectorAll('.cf-btn-main');
                 cfButtons.forEach(btn => {
                     btn.addEventListener('click', function(e) {
                         e.stopPropagation();
@@ -1544,10 +1815,36 @@
         }
 
         function showPage(pageId) {
+            // Hide all pages
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
-            document.getElementById(pageId).classList.add('active');
+            document.querySelectorAll('.page-full').forEach(page => {
+                page.classList.remove('active');
+                page.style.display = 'none';
+            });
+            document.querySelectorAll('.page-with-sidebar').forEach(page => {
+                page.style.display = 'none';
+            });
+
+            // Show selected page
+            if (pageId === 'homePage') {
+                const homePage = document.getElementById('homePage');
+                homePage.classList.add('active');
+                homePage.style.display = 'flex';
+            } else if (pageId === 'diagnosisPage') {
+                const diagnosisPage = document.getElementById('diagnosisPage');
+                diagnosisPage.classList.add('active');
+                diagnosisPage.style.display = 'block';
+            } else if (pageId === 'resultsPage') {
+                const resultsContainer = document.getElementById('resultsPageContainer');
+                resultsContainer.style.display = 'flex';
+                document.getElementById('resultsPage').classList.add('active');
+            } else if (pageId === 'diseasePage') {
+                const diseaseContainer = document.getElementById('resultsPageContainer'); // Use same container
+                diseaseContainer.style.display = 'flex';
+                document.getElementById('diseasePage').classList.add('active');
+            }
 
             // Update sidebar navigation
             document.querySelectorAll('.nav-menu a').forEach(nav => {
@@ -1555,11 +1852,14 @@
             });
 
             if (pageId === 'homePage') {
-                document.getElementById('nav-home').classList.add('active');
+                const navHome = document.getElementById('nav-home');
+                if (navHome) navHome.classList.add('active');
             } else if (pageId === 'diagnosisPage') {
-                document.getElementById('nav-diagnosis').classList.add('active');
+                const navDiagnosis = document.getElementById('nav-diagnosis');
+                if (navDiagnosis) navDiagnosis.classList.add('active');
             } else if (pageId === 'diseasePage') {
-                document.getElementById('nav-disease').classList.add('active');
+                const navDisease = document.getElementById('nav-disease');
+                if (navDisease) navDisease.classList.add('active');
             }
         }
 
